@@ -7,7 +7,9 @@ This file is the working brief for building this site. Claude keeps it updated w
 - **Current phase:** Phase 1 (Scaffold and deploy). The owner asked to set up GitHub and Vercel first; design and content (Phase 0 discovery onward) come later.
 - Skeleton site is built: Astro 7 + Keystatic (homepage singleton) + Vercel adapter, base layout with SEO head and shared Person/WebSite schema, robots.txt, sitemap.
 - Live on Vercel at https://charanjeev.vercel.app (verified 2026-11-27: homepage, robots.txt, sitemap, /keystatic all return 200).
-- Next: owner creates the Keystatic GitHub App and adds its env vars in Vercel; then confirm editing works on the live site.
+- GitHub App `charanjeev-keystatic` created and installed on the repo; its four env vars are saved in Vercel (Production).
+- Next: confirm Keystatic login and a test edit work on the live site.
+- Note: GitHub now labels the OAuth callback field "Redirect URI", and client secrets live under the app's "Credentials" tab.
 
 ## Decisions log
 
