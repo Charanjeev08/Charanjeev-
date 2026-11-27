@@ -21,6 +21,7 @@ This file is the working brief for building this site. Claude keeps it updated w
 | 2026-11-27 | Keystatic uses local storage in dev and GitHub storage (repo Charanjeev08/Charanjeev-) in production builds. Content lives in `content/`. |
 | 2026-11-27 | Vercel project connected; deploys at charanjeev.vercel.app. Cloud environment `Charanjeev-` allows Claude to reach charanjeev.vercel.app and charanjeev.com for testing. |
 | 2026-11-27 | Keystatic login failed with `bad_verification_code` because the browser hit the OAuth callback twice (codes are single-use). Fix: `src/pages/api/keystatic/github/oauth/callback.ts` wraps Keystatic's handler, returns a small page whose script POSTs the code once (so background loaders cannot use it up), caches results per code for 5 minutes and replays them, falls through to /keystatic if a login cookie already exists, and adds `redirect_uri` to the token exchange. Keep this file. |
+| 2026-11-27 | Root cause of the Keystatic login failures: `KEYSTATIC_SECRET` was shorter than 32 characters, so Keystatic crashed after GitHub accepted the login and the browser's retry reused the single-use code. Always generate it with `openssl rand -hex 32`. |
 | 2026-11-27 | Domain assumed `charanjeev.com` in `astro.config.mjs`, `src/lib/site.ts` and `public/robots.txt`. Confirm with owner. |
 
 ## Open questions / waiting on the owner
