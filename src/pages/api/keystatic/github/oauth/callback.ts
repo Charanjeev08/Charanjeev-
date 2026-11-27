@@ -76,7 +76,7 @@ const page = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
     var r = await fetch(location.pathname + location.search, { method: 'POST', credentials: 'same-origin' });
     clearTimeout(timer);
     var t = await r.text(); var j;
-    try { j = JSON.parse(t); } catch (pe) { j = { ok: false, details: 'HTTP ' + r.status + ' ' + r.statusText + '\n' + t.slice(0, 500) }; }
+    try { j = JSON.parse(t); } catch (pe) { j = { ok: false, details: 'HTTP ' + r.status + ' ' + r.statusText + '\\n' + t.slice(0, 500) }; }
     if (j.ok) { location.replace(j.location || '/keystatic'); return; }
     await new Promise(function (res) { setTimeout(res, 1500); });
     if (loggedIn()) { location.replace('/keystatic'); return; }
