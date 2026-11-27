@@ -148,7 +148,7 @@ const faqs = [
       <h2 id="pains-h" class="reveal">Where Meta ad budgets usually leak</h2>
       <p class="section-lead">Pick the one that sounds most like you.</p>
       <div class="pains">
-        <div class="pain-list" role="list">
+        <div class="pain-list">
           {pains.map((p, i) => (
             <button class="pain-btn" type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-i={i} aria-controls="pain-panel">
               "{p.q}"
