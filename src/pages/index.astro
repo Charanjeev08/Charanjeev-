@@ -1,0 +1,22 @@
+---
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../keystatic.config';
+import Base from '../layouts/Base.astro';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const home = await reader.singletons.home.read();
+---
+<Base title="Charanjeev | Personal site, coming soon" description="Personal site of Charanjeev. New content is on the way.">
+  <section class="hero">
+    <p class="eyebrow">{home?.eyebrow}</p>
+    <h1>{home?.headline}</h1>
+    <p class="lead">{home?.lead}</p>
+  </section>
+</Base>
+
+<style>
+  .hero { max-width: 72rem; margin: 0 auto; padding: 6rem 1rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; color: #555; margin: 0; }
+  h1 { font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1.1; margin: .5rem 0 1rem; }
+  .lead { font-size: 1.15rem; color: #333; max-width: 40rem; }
+</style>
