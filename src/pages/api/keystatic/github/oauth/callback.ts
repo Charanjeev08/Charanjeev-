@@ -18,7 +18,7 @@ export const ALL: APIRoute = async (context) => {
     if (url.startsWith('https://github.com/login/oauth/access_token')) {
       try {
         const data = await res.clone().json();
-        diag = `HTTP ${res.status}; error=${data.error ?? 'none'}; fields=${Object.keys(data).join(',')}`;
+        diag = `HTTP ${res.status}; error=${data.error ?? "none"}; description=${data.error_description ?? "none"}; fields=${Object.keys(data).join(',')}`;
       } catch {
         diag = `HTTP ${res.status}; non-JSON response`;
       }
