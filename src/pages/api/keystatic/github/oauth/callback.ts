@@ -19,6 +19,7 @@ export const prerender = false;
 
 const handler = makeHandler({ config });
 
+const steps: string[] = [];
 type Stored = { status: number; headers: [string, string][]; body: string; diag: string };
 const byCode = new Map<string, { at: number; result: Promise<Stored> }>();
 const TTL_MS = 5 * 60 * 1000;
@@ -26,25 +27,32 @@ const TTL_MS = 5 * 60 * 1000;
 async function exchange(context: Parameters<APIRoute>[0], url: URL): Promise<Stored> {
   const redirectUri = `${url.origin}/api/keystatic/github/oauth/callback`;
   let diag = 'no token request was made';
+  steps.length = 0;
+  steps.push('exchange started');
   const realFetch = globalThis.fetch;
   globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
     const u0 = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     if (!u0.startsWith('https://github.com/login/oauth/access_token')) return realFetch(input, init);
     const u = new URL(u0);
     if (u.searchParams.has('code') && !u.searchParams.has('redirect_uri')) u.searchParams.set('redirect_uri', redirectUri);
-    const res = await realFetch(u, init);
+    steps.push('github request sent');
+    const res = await realFetch(u, { ...init, signal: AbortSignal.timeout(15000) });
+    steps.push(`github replied HTTP ${res.status}`);
+    const text = await res.text();
+    steps.push('github reply read');
     try {
-      const data = await res.clone().json();
+      const data = JSON.parse(text);
       diag = `error=${data.error ?? 'none'}; description=${data.error_description ?? 'none'}; fields=${Object.keys(data).join(',')}`;
-      lastDiag = diag;
     } catch {
       diag = `HTTP ${res.status}; non-JSON response`;
     }
-    return res;
+    lastDiag = diag;
+    return new Response(text, { status: res.status, headers: { 'content-type': 'application/json' } });
   }) as typeof fetch;
   try {
     const getReq = new Request(url, { method: 'GET', headers: context.request.headers });
     const res = await handler({ request: getReq } as Parameters<APIRoute>[0]);
+    steps.push(`keystatic finished ${res.status}`);
     const headers: [string, string][] = [];
     for (const c of res.headers.getSetCookie()) headers.push(['set-cookie', c]);
     const loc = res.headers.get('location');
@@ -64,7 +72,9 @@ const page = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
   var m = document.getElementById('m'), d = document.getElementById('d');
   function loggedIn() { return document.cookie.indexOf('keystatic-gh-access-token=') !== -1; }
   try {
+    var timer = setTimeout(function () { m.textContent = 'Still waiting for the server after 25 seconds. Please send a screenshot.'; }, 25000);
     var r = await fetch(location.pathname + location.search, { method: 'POST', credentials: 'same-origin' });
+    clearTimeout(timer);
     var t = await r.text(); var j;
     try { j = JSON.parse(t); } catch (pe) { j = { ok: false, details: 'HTTP ' + r.status + ' ' + r.statusText + '\n' + t.slice(0, 500) }; }
     if (j.ok) { location.replace(j.location || '/keystatic'); return; }
@@ -97,7 +107,7 @@ export const POST: APIRoute = async (context) => {
   } catch (e) {
     const err = e as Error;
     return new Response(
-      JSON.stringify({ ok: false, location: null, details: `Server error: ${err?.name}: ${err?.message}\n${(err?.stack ?? '').split('\n').slice(0, 6).join('\n')}\nlast exchange: ${lastDiag}` }),
+      JSON.stringify({ ok: false, location: null, details: `Server error: ${err?.name}: ${err?.message}\n${(err?.stack ?? '').split('\n').slice(0, 6).join('\n')}\nlast exchange: ${lastDiag}\nsteps: ${steps.join(' > ')}` }),
       { status: 200, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } },
     );
   }
@@ -130,6 +140,6 @@ const post: APIRoute = async (context) => {
     else headers.append(k, v);
   }
   const ok = s.status >= 300 && s.status < 400 && !!location;
-  const details = `${s.body}\n${s.diag}\nreplayed=${replay}; status=${s.status}`;
+  const details = `${s.body}\n${s.diag}\nreplayed=${replay}; status=${s.status}\nsteps: ${steps.join(' > ')}`;
   return new Response(JSON.stringify({ ok, location, details }), { status: 200, headers });
 };
