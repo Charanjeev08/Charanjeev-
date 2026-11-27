@@ -6,7 +6,8 @@ This file is the working brief for building this site. Claude keeps it updated w
 
 - **Current phase:** Phase 1 (Scaffold and deploy). The owner asked to set up GitHub and Vercel first; design and content (Phase 0 discovery onward) come later.
 - Skeleton site is built: Astro 7 + Keystatic (homepage singleton) + Vercel adapter, base layout with SEO head and shared Person/WebSite schema, robots.txt, sitemap.
-- Next: connect the repo to Vercel, set up Keystatic's GitHub app, confirm editing works on the live site.
+- Live on Vercel at https://charanjeev.vercel.app (verified 2026-11-27: homepage, robots.txt, sitemap, /keystatic all return 200).
+- Next: owner creates the Keystatic GitHub App and adds its env vars in Vercel; then confirm editing works on the live site.
 
 ## Decisions log
 
@@ -16,6 +17,7 @@ This file is the working brief for building this site. Claude keeps it updated w
 | 2026-11-27 | Owner chose to do setup (GitHub + Vercel) before discovery/design/content. |
 | 2026-11-27 | Versions installed: astro 7.4, @astrojs/vercel 11, @astrojs/react 7 (current major for Astro 7), @astrojs/markdoc 2, @keystatic/core 0.6, @keystatic/astro 6, react 19, @astrojs/sitemap 3.7, @fontsource-variable/inter (placeholder font until brand is agreed). |
 | 2026-11-27 | Keystatic uses local storage in dev and GitHub storage (repo Charanjeev08/Charanjeev-) in production builds. Content lives in `content/`. |
+| 2026-11-27 | Vercel project connected; deploys at charanjeev.vercel.app. Cloud environment `Charanjeev-` allows Claude to reach charanjeev.vercel.app and charanjeev.com for testing. |
 | 2026-11-27 | Domain assumed `charanjeev.com` in `astro.config.mjs`, `src/lib/site.ts` and `public/robots.txt`. Confirm with owner. |
 
 ## Open questions / waiting on the owner
