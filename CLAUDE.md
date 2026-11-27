@@ -24,10 +24,21 @@ This file is the working brief for building this site. Claude keeps it updated w
 | 2026-11-27 | Root cause of the Keystatic login failures: `KEYSTATIC_SECRET` was shorter than 32 characters, so Keystatic crashed after GitHub accepted the login and the browser's retry reused the single-use code. Always generate it with `openssl rand -hex 32`. |
 | 2026-11-27 | Domain assumed `charanjeev.com` in `astro.config.mjs`, `src/lib/site.ts` and `public/robots.txt`. Confirm with owner. |
 
+## Facts about the owner (confirmed)
+
+- Performance marketing and Meta ads specialist, based in Mohali (Punjab, India). Works remotely.
+- Owner may have typed the name as "Chiranjeev" once; site uses "Charanjeev". Confirm spelling.
+
+## Draft pages
+
+- `/homepage`: draft homepage built 2026-11-27 at the owner's request (design and deploy first, refine later). noindex, excluded from sitemap. Brand draft: Inter, accent green #0b7a5f, neutral greys. Placeholders (yellow dashed `.ph`) mark every fact still needed. Contact form is not wired to an inbox yet (needs FormSubmit alias). Content is hardcoded in the page for now; move to Keystatic once copy is final.
+
 ## Open questions / waiting on the owner
 
 - Phase 0 answers (section 1 below), when the owner is ready.
 - Confirm the domain (`charanjeev.com`?) and whether they own it yet.
+- Resume details for `/homepage` placeholders: years, ad spend managed, results, clients/logos, case studies, testimonials, LinkedIn URL, minimum budget, pricing model, reply time.
+- Where contact form leads should go (FormSubmit needs the inbox address, set up by the owner, never published in source).
 
 ---
 

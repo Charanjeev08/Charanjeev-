@@ -1,0 +1,579 @@
+---
+// DRAFT homepage for review. noindex until content is final.
+// Anything inside <span class="ph"> is a placeholder that needs real info from the owner.
+import Base from '../layouts/Base.astro';
+
+const nav = [
+  { href: '#services', label: 'Services' },
+  { href: '#calculator', label: 'ROAS calculator' },
+  { href: '#process', label: 'How I work' },
+  { href: '#faq', label: 'FAQ' },
+];
+
+const pains = [
+  {
+    q: 'We spend more on Meta ads every month, but sales stay flat.',
+    why: 'Budget usually goes up before the basics are fixed: broad targeting, one or two tired creatives, and no clear split between new and returning buyers.',
+    change: 'I restructure the account around a few clear campaigns, separate prospecting from retargeting, and set budgets by what each one returns.',
+    payoff: 'Every rupee has a job, and you can see which campaigns earn their budget.',
+  },
+  {
+    q: 'Ads Manager says one thing. Our sales numbers say another.',
+    why: 'Pixel events fire twice, fire on the wrong page, or miss purchases blocked by browsers. Meta then optimises toward bad data.',
+    change: 'I audit the Pixel and Conversions API setup, fix event names and deduplication, and match reported purchases to your real orders.',
+    payoff: 'You can trust the numbers again, and so can Meta\'s algorithm.',
+  },
+  {
+    q: 'Our ads worked for a few weeks, then results dropped.',
+    why: 'This is creative fatigue. The same people see the same ads too often, so cost per result climbs.',
+    change: 'I set up a steady creative testing routine with new hooks, formats and angles, and retire ads before they wear out.',
+    payoff: 'Results stay steadier, and you always know which ad to make next.',
+  },
+  {
+    q: 'We get leads, but most of them never pick up the phone.',
+    why: 'Instant forms with no friction attract people who tap without reading. Meta counts them as leads anyway.',
+    change: 'I add qualifying questions, test higher-intent form types, and send lead quality back to Meta so it learns who actually buys.',
+    payoff: 'Fewer junk leads, and your sales team spends time on real prospects.',
+  },
+  {
+    q: 'Our agency sends reports, but we still don\'t know what is working.',
+    why: 'Reports full of reach and clicks hide the numbers that matter to the business.',
+    change: 'I report on cost per purchase or lead, return on ad spend, and what I am changing next, in plain words.',
+    payoff: 'You can make budget decisions in minutes, not after a long call.',
+  },
+];
+
+const services = [
+  { title: 'Meta Ads management', body: 'Facebook and Instagram campaigns planned, launched and managed every week, with budgets set by return, not habit.' },
+  { title: 'Ad account audit', body: 'A full review of structure, targeting, creatives, tracking and spend, with a prioritised list of fixes.' },
+  { title: 'Tracking setup', body: 'Meta Pixel and Conversions API set up and checked, so purchases and leads are counted once and counted right.' },
+  { title: 'Creative testing', body: 'A simple system for testing hooks, formats and offers, so you learn what sells and keep a supply of fresh ads.' },
+  { title: 'Performance marketing strategy', body: 'Funnel, offer and channel planning that ties ad spend to revenue targets you can actually check.' },
+];
+
+const steps = [
+  { n: '01', title: 'Audit', body: 'I go through your ad account, tracking and numbers, and show you where money is being lost.' },
+  { n: '02', title: 'Plan', body: 'We agree on goals, budget and the first round of changes, with targets written down.' },
+  { n: '03', title: 'Launch and test', body: 'I rebuild or adjust campaigns, launch new creatives, and test one clear idea at a time.' },
+  { n: '04', title: 'Report and scale', body: 'You get a short, plain report. Budget moves to what works, and we scale it step by step.' },
+];
+
+const faqs = [
+  { q: 'What does a performance marketing specialist do?', a: 'A performance marketing specialist runs paid ads that are judged on measurable results, such as purchases, leads or return on ad spend. I focus on Meta ads, which means Facebook and Instagram.' },
+  { q: 'Do you only work with businesses in Mohali?', a: 'No. I am based in Mohali, near Chandigarh, and I work with businesses remotely. Calls happen over video.' },
+  { q: 'What is the minimum ad budget you work with?', a: '<span class="ph">[Add: your minimum monthly ad spend, e.g. ₹50,000]</span>' },
+  { q: 'How soon will I see results?', a: 'Tracking fixes and account clean-up often show in the data within the first couple of weeks. Steady, reliable improvement in cost per result usually takes one to three months of testing. I will tell you honestly what to expect after the audit.' },
+  { q: 'Who owns the ad account?', a: 'You do. I work inside your Business Manager with partner access, so your account, data and audiences always stay yours.' },
+  { q: 'How much do you charge?', a: '<span class="ph">[Add: how your pricing works, e.g. a fixed monthly fee, or a fee based on ad spend]</span>' },
+];
+---
+<Base
+  title="Charanjeev | Meta Ads and Performance Marketing Specialist"
+  description="Charanjeev is a performance marketing and Meta ads specialist in Mohali. Facebook and Instagram ads managed for sales and leads you can measure."
+  noindex={true}
+  chrome={false}
+>
+  <header class="nav" slot="header">
+    <div class="wrap nav-inner">
+      <a href="/homepage" class="brand">Charanjeev<span class="dot">.</span></a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+        </ul>
+      </nav>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book a free audit</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <ul>
+        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+      </ul>
+      <a href="#contact" class="btn btn-primary">Book a free audit</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Meta Ads · Performance Marketing · Mohali, India</p>
+        <h1>Meta ads that <span class="hl">pay for themselves</span></h1>
+        <p class="lead">
+          I'm Charanjeev, a performance marketing specialist. I plan, run and fix Facebook and Instagram ad campaigns
+          for businesses that need sales and leads they can count. Clear tracking, steady testing, and plain reports.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Book a free ad audit</a>
+          <a href="#calculator" class="btn btn-ghost">Try the ROAS calculator</a>
+        </div>
+        <ul class="trust">
+          <li>Meta Ads specialist</li>
+          <li>Based in Mohali, works remotely</li>
+          <li><span class="ph">[Add: years of experience or ad spend managed]</span></li>
+        </ul>
+      </div>
+      <div class="hero-card" aria-label="Example of a weekly report summary">
+        <p class="card-label">What a weekly report looks like</p>
+        <dl class="metrics">
+          <div><dt>Return on ad spend</dt><dd>ROAS</dd></div>
+          <div><dt>Cost per purchase</dt><dd>CPA</dd></div>
+          <div><dt>Spend this week</dt><dd>₹</dd></div>
+          <div><dt>Next change</dt><dd class="small">New hook test on top ad set</dd></div>
+        </dl>
+        <p class="card-note">Four numbers and one next step. No 20-slide decks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <h2 id="proof-h" class="sr-only">Results and clients</h2>
+      <div class="stats">
+        <div class="stat"><span class="ph">[Add stat]</span><span class="stat-label">e.g. ad spend managed</span></div>
+        <div class="stat"><span class="ph">[Add stat]</span><span class="stat-label">e.g. average ROAS for clients</span></div>
+        <div class="stat"><span class="ph">[Add stat]</span><span class="stat-label">e.g. brands worked with</span></div>
+        <div class="stat"><span class="ph">[Add stat]</span><span class="stat-label">e.g. years in performance marketing</span></div>
+      </div>
+      <p class="logos-note"><span class="ph">[Add: client or employer logos you are allowed to show]</span></p>
+    </div>
+  </section>
+
+  <!-- SOUND FAMILIAR -->
+  <section class="section" id="problems" aria-labelledby="pains-h">
+    <div class="wrap">
+      <p class="eyebrow">Sound familiar?</p>
+      <h2 id="pains-h" class="reveal">Where Meta ad budgets usually leak</h2>
+      <p class="section-lead">Pick the one that sounds most like you.</p>
+      <div class="pains">
+        <div class="pain-list" role="list">
+          {pains.map((p, i) => (
+            <button class="pain-btn" type="button" aria-pressed={i === 0 ? 'true' : 'false'} data-i={i} aria-controls="pain-panel">
+              "{p.q}"
+            </button>
+          ))}
+        </div>
+        <div id="pain-panel" class="pain-panel" aria-live="polite">
+          {pains.map((p, i) => (
+            <div class="pain-detail" data-i={i} hidden={i !== 0}>
+              <h3>Why it happens</h3>
+              <p>{p.why}</p>
+              <h3>What I change</h3>
+              <p>{p.change}</p>
+              <h3>What you get</h3>
+              <p class="payoff">{p.payoff}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section alt" id="services" aria-labelledby="services-h">
+    <div class="wrap">
+      <p class="eyebrow">Services</p>
+      <h2 id="services-h" class="reveal">What I can do for you</h2>
+      <div class="cards">
+        {services.map((s) => (
+          <article class="card">
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="section" id="calculator" aria-labelledby="calc-h">
+    <div class="wrap calc-grid">
+      <div>
+        <p class="eyebrow">Free tool</p>
+        <h2 id="calc-h" class="reveal">What is a better ROAS worth to you?</h2>
+        <p class="section-lead">
+          ROAS (return on ad spend) is the revenue your ads bring in for every rupee you spend.
+          A ROAS of 3 means ₹3 back for every ₹1 spent. Enter your numbers to see what a small improvement adds up to.
+        </p>
+      </div>
+      <form class="calc" id="calc" novalidate>
+        <label>Monthly ad spend (₹)
+          <input type="number" id="c-spend" inputmode="numeric" min="0" step="1000" value="100000" />
+        </label>
+        <div class="row">
+          <label>Current ROAS
+            <input type="number" id="c-now" inputmode="decimal" min="0" step="0.1" value="2" />
+          </label>
+          <label>Target ROAS
+            <input type="number" id="c-target" inputmode="decimal" min="0" step="0.1" value="2.5" />
+          </label>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <div><span class="out-label">Revenue now, per month</span><span class="out" id="o-now">₹2,00,000</span></div>
+          <div><span class="out-label">At target ROAS, per month</span><span class="out" id="o-target">₹2,50,000</span></div>
+          <div class="big"><span class="out-label">Extra revenue per year, same budget</span><span class="out" id="o-year">₹6,00,000</span></div>
+        </div>
+        <p class="calc-note">Example numbers. This is simple maths, not a promise of results.</p>
+        <a href="#contact" class="btn btn-primary">Get an audit of my account</a>
+      </form>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section alt" id="process" aria-labelledby="process-h">
+    <div class="wrap">
+      <p class="eyebrow">How I work</p>
+      <h2 id="process-h" class="reveal">Four steps, no surprises</h2>
+      <ol class="steps">
+        {steps.map((s) => (
+          <li class="step">
+            <span class="step-n" aria-hidden="true">{s.n}</span>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- WORK + TESTIMONIALS -->
+  <section class="section" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="work-h" class="reveal">Results from real accounts</h2>
+      <div class="cards two">
+        <article class="card case">
+          <p class="case-tag"><span class="ph">[Add: industry, e.g. D2C skincare]</span></p>
+          <h3><span class="ph">[Add: result headline, e.g. ROAS from 1.8 to 3.1 in 90 days]</span></h3>
+          <p><span class="ph">[Add: 2 sentences on the situation and what you changed]</span></p>
+        </article>
+        <article class="card case">
+          <p class="case-tag"><span class="ph">[Add: industry, e.g. real estate leads]</span></p>
+          <h3><span class="ph">[Add: result headline, e.g. cost per qualified lead down 40%]</span></h3>
+          <p><span class="ph">[Add: 2 sentences on the situation and what you changed]</span></p>
+        </article>
+      </div>
+      <figure class="quote">
+        <blockquote><span class="ph">[Add: a real client testimonial or LinkedIn recommendation]</span></blockquote>
+        <figcaption><span class="ph">[Name, role, company]</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt" id="faq" aria-labelledby="faq-h">
+    <div class="wrap narrow">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-h" class="reveal">Questions people ask before they get in touch</h2>
+      <div class="faqs">
+        {faqs.map((f) => (
+          <details>
+            <summary><h3>{f.q}</h3></summary>
+            <p set:html={f.a} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="contact-h">Get a free audit of your Meta ad account</h2>
+        <p class="section-lead">
+          Tell me a little about your business. I'll look at your account and come back with the three changes
+          I would make first. No obligation.
+        </p>
+        <ul class="trust light">
+          <li>Reply within <span class="ph">[Add: e.g. 1 working day]</span></li>
+          <li>You keep full ownership of your ad account</li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <label>Name<input name="name" autocomplete="name" required /></label>
+        <label>Work email<input name="email" type="email" autocomplete="email" required /></label>
+        <label>Website<input name="website" type="url" inputmode="url" placeholder="https://" /></label>
+        <label>Monthly ad spend
+          <select name="budget" required>
+            <option value="">Choose one</option>
+            <option>Under ₹50,000</option>
+            <option>₹50,000 to ₹2,00,000</option>
+            <option>₹2,00,000 to ₹10,00,000</option>
+            <option>Over ₹10,00,000</option>
+          </select>
+        </label>
+        <label>Anything I should know? <span class="opt">(optional)</span><textarea name="note" rows="3"></textarea></label>
+        <button type="submit" class="btn btn-primary">Request my free audit</button>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="foot" slot="footer">
+    <div class="wrap foot-inner">
+      <p>&copy; {new Date().getFullYear()} Charanjeev · Performance marketing and Meta ads · Mohali, Punjab, India</p>
+      <p><span class="ph">[Add: LinkedIn and other profile links]</span></p>
+    </div>
+  </footer>
+
+  <div class="sticky" id="sticky" aria-hidden="true">
+    <div class="wrap sticky-inner">
+      <span>Wasting budget on Meta ads? Get a free audit.</span>
+      <a href="#contact" class="btn btn-primary btn-sm" tabindex="-1">Book a free audit</a>
+    </div>
+  </div>
+</Base>
+
+<style is:global>
+  :root {
+    --accent: #0b7a5f;
+    --accent-dark: #075e49;
+    --accent-soft: #e7f4ef;
+    --ink: #0f1720;
+    --ink-2: #3d4753;
+    --line: #e3e7ea;
+    --bg-alt: #f5f7f8;
+    --radius: 14px;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { color: var(--ink); }
+  .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+  .wrap.narrow { max-width: 48rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin: 0.25rem 0 0.75rem; }
+  h3 { font-size: 1.1rem; margin: 0 0 0.4rem; }
+  a { color: var(--accent-dark); }
+
+  /* placeholders: obvious on purpose */
+  .ph { background: #fff4d6; color: #6b4a00; border: 1px dashed #c99a2e; border-radius: 4px; padding: 0 0.3em; font-weight: 500; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 1.3rem; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; font: inherit; font-weight: 600; transition: background 0.15s, transform 0.15s; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: #fff; }
+  .btn-ghost:hover { border-color: var(--ink-2); }
+  .btn-sm { padding: 0.55rem 0.95rem; font-size: 0.92rem; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* nav */
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; gap: 1.5rem; height: 64px; }
+  .brand { font-weight: 800; font-size: 1.15rem; color: var(--ink); text-decoration: none; margin-right: auto; }
+  .brand .dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+  .nav-links a:hover { color: var(--ink); }
+  .menu-btn { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: #fff; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: var(--ink); }
+  .mobile-menu { border-top: 1px solid var(--line); padding: 1rem; background: #fff; }
+  .mobile-menu ul { list-style: none; margin: 0 0 1rem; padding: 0; }
+  .mobile-menu li a { display: block; padding: 0.8rem 0; color: var(--ink); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--line); }
+  .mobile-menu .btn { width: 100%; }
+  @media (max-width: 860px) {
+    .nav-links, .nav-cta { display: none; }
+    .menu-btn { display: inline-flex; }
+  }
+
+  /* hero */
+  .hero { padding: 4.5rem 0 3.5rem; background: radial-gradient(1200px 400px at 80% -10%, var(--accent-soft), transparent 60%); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem; font-weight: 700; color: var(--accent-dark); margin: 0; }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); margin: 0.6rem 0 1rem; }
+  .hl { color: var(--accent-dark); background: linear-gradient(transparent 62%, var(--accent-soft) 62%); }
+  .lead { font-size: 1.15rem; color: var(--ink-2); max-width: 36rem; margin: 0 0 1.75rem; }
+  .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .trust { list-style: none; padding: 0; margin: 1.75rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; color: var(--ink-2); font-size: 0.95rem; }
+  .trust li::before { content: "✓"; color: var(--accent); font-weight: 800; margin-right: 0.45rem; }
+  .hero-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 20px 50px -25px rgba(15, 23, 32, 0.25); }
+  .card-label { margin: 0 0 1rem; font-weight: 700; font-size: 0.9rem; color: var(--ink-2); }
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0; }
+  .metrics div { background: var(--bg-alt); border-radius: 10px; padding: 0.9rem; }
+  .metrics dt { font-size: 0.8rem; color: var(--ink-2); }
+  .metrics dd { margin: 0.2rem 0 0; font-size: 1.5rem; font-weight: 800; color: var(--accent-dark); }
+  .metrics dd.small { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+  .card-note { margin: 1rem 0 0; font-size: 0.9rem; color: var(--ink-2); }
+  @media (max-width: 860px) {
+    .hero { padding: 2.5rem 0 2.5rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* proof */
+  .proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 2rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .stat { display: flex; flex-direction: column; gap: 0.35rem; font-size: 1.1rem; }
+  .stat-label { font-size: 0.85rem; color: var(--ink-2); }
+  .logos-note { margin: 1.25rem 0 0; font-size: 0.95rem; }
+  @media (max-width: 860px) { .stats { grid-template-columns: 1fr 1fr; } }
+
+  /* sections */
+  .section { padding: 5rem 0; }
+  .section.alt { background: var(--bg-alt); }
+  .section-lead { color: var(--ink-2); font-size: 1.08rem; max-width: 40rem; margin: 0 0 2rem; }
+  @media (max-width: 860px) { .section { padding: 3.5rem 0; } }
+
+  /* reveal: clip-path wipe (keeps text contrast valid mid-animation) */
+  .js .reveal { clip-path: inset(0 100% 0 0); transition: clip-path 0.7s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { clip-path: inset(0 0 0 0); }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { clip-path: none; transition: none; } }
+
+  /* pains */
+  .pains { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: start; }
+  .pain-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .pain-btn { text-align: left; font: inherit; font-weight: 600; padding: 1rem 1.1rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+  .pain-btn:hover { border-color: var(--ink-2); }
+  .pain-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .pain-panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; position: sticky; top: 84px; }
+  .pain-detail h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); margin: 1.1rem 0 0.3rem; }
+  .pain-detail h3:first-child { margin-top: 0; }
+  .pain-detail p { margin: 0; color: var(--ink-2); }
+  .pain-detail .payoff { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .pains { grid-template-columns: 1fr; } .pain-panel { position: static; } }
+
+  /* cards */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .cards.two { grid-template-columns: 1fr 1fr; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+  .card p { margin: 0; color: var(--ink-2); }
+  .case-tag { font-size: 0.85rem; margin-bottom: 0.6rem !important; }
+  .case h3 { margin-bottom: 0.6rem; }
+  @media (max-width: 860px) { .cards, .cards.two { grid-template-columns: 1fr; } }
+
+  /* calculator */
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .calc { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: grid; gap: 1rem; box-shadow: 0 20px 50px -30px rgba(15, 23, 32, 0.3); }
+  .calc label, .contact-form label { display: grid; gap: 0.35rem; font-weight: 600; font-size: 0.92rem; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  input, select, textarea { font: inherit; font-weight: 400; padding: 0.7rem 0.8rem; border: 1.5px solid #c9d0d6; border-radius: 10px; background: #fff; color: var(--ink); width: 100%; min-width: 0; }
+  input:focus, select:focus, textarea:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+  .calc-out { display: grid; gap: 0.6rem; background: var(--bg-alt); border-radius: 12px; padding: 1rem; }
+  .calc-out div { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+  .out-label { color: var(--ink-2); font-size: 0.92rem; }
+  .out { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .calc-out .big { border-top: 1px solid var(--line); padding-top: 0.6rem; }
+  .calc-out .big .out { font-size: 1.6rem; color: var(--accent-dark); }
+  .calc-note { margin: 0; font-size: 0.85rem; color: var(--ink-2); }
+  @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* steps */
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+  .step-n { display: inline-block; font-weight: 800; color: var(--accent-dark); font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .step p { margin: 0; color: var(--ink-2); }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+  /* quote */
+  .quote { margin: 2rem 0 0; padding: 1.75rem; border-left: 4px solid var(--accent); background: var(--bg-alt); border-radius: 0 var(--radius) var(--radius) 0; }
+  .quote blockquote { margin: 0 0 0.75rem; font-size: 1.15rem; }
+  .quote figcaption { color: var(--ink-2); font-size: 0.95rem; }
+
+  /* faq */
+  .faqs { display: grid; gap: 0.6rem; }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 0 1.2rem; }
+  summary { cursor: pointer; list-style: none; padding: 1.1rem 0; display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.4rem; color: var(--accent-dark); line-height: 1; }
+  details[open] summary::after { content: "−"; }
+  summary h3 { margin: 0; font-size: 1.02rem; }
+  details p { margin: 0 0 1.1rem; color: var(--ink-2); }
+
+  /* contact */
+  .contact { background: var(--ink); color: #fff; }
+  .contact .section-lead { color: #c8d0d8; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .trust.light { color: #c8d0d8; }
+  .trust.light li::before { color: #5fd3ae; }
+  .contact-form { background: #fff; color: var(--ink); border-radius: var(--radius); padding: 1.5rem; display: grid; gap: 0.9rem; }
+  .opt { font-weight: 400; color: var(--ink-2); }
+  .form-msg { margin: 0; font-size: 0.92rem; color: var(--ink-2); min-height: 1.2em; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* footer */
+  .foot { border-top: 1px solid var(--line); padding: 1.5rem 0 5rem; color: var(--ink-2); font-size: 0.9rem; }
+  .foot-inner { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .foot p { margin: 0; }
+
+  /* sticky cta */
+  .sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -10px 30px -20px rgba(15,23,32,0.35); transform: translateY(110%); transition: transform 0.25s; padding: 0.65rem 0; }
+  .sticky.show { transform: translateY(0); }
+  .sticky-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-weight: 600; font-size: 0.95rem; }
+  @media (max-width: 520px) { .sticky-inner span { font-size: 0.85rem; } }
+  @media (prefers-reduced-motion: reduce) { .sticky { transition: none; } }
+</style>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  // mobile menu
+  const menuBtn = document.querySelector<HTMLButtonElement>('.menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const setMenu = (open: boolean) => {
+    menu.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+
+  // "sound familiar?" picker
+  const painBtns = document.querySelectorAll<HTMLButtonElement>('.pain-btn');
+  const painDetails = document.querySelectorAll<HTMLElement>('.pain-detail');
+  painBtns.forEach((b) =>
+    b.addEventListener('click', () => {
+      painBtns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      painDetails.forEach((d) => (d.hidden = d.dataset.i !== b.dataset.i));
+    }),
+  );
+
+  // ROAS calculator
+  const inr = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+  const num = (id: string) => Math.max(0, parseFloat((document.getElementById(id) as HTMLInputElement).value) || 0);
+  const calc = () => {
+    const spend = num('c-spend'), now = num('c-now'), target = num('c-target');
+    document.getElementById('o-now')!.textContent = inr.format(spend * now);
+    document.getElementById('o-target')!.textContent = inr.format(spend * target);
+    const extra = spend * (target - now) * 12;
+    document.getElementById('o-year')!.textContent = (extra < 0 ? '−' : '') + inr.format(Math.abs(extra));
+  };
+  document.getElementById('calc')!.addEventListener('input', calc);
+  document.getElementById('calc')!.addEventListener('submit', (e) => e.preventDefault());
+  calc();
+
+  // contact form (not connected to an inbox yet)
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const msg = document.getElementById('form-msg')!;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    msg.textContent = 'Preview only: this form is not connected to an inbox yet.';
+  });
+
+  // reveal headings when on screen
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }),
+    { rootMargin: '0px 0px -10% 0px' },
+  );
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // sticky CTA after the hero, hidden while the contact section is visible
+  const sticky = document.getElementById('sticky')!;
+  const stickyLink = sticky.querySelector('a')!;
+  let pastHero = false, atContact = false;
+  const updateSticky = () => {
+    const show = pastHero && !atContact;
+    sticky.classList.toggle('show', show);
+    sticky.setAttribute('aria-hidden', String(!show));
+    stickyLink.tabIndex = show ? 0 : -1;
+  };
+  new IntersectionObserver(([en]) => { pastHero = !en.isIntersecting; updateSticky(); }).observe(document.getElementById('top')!);
+  new IntersectionObserver(([en]) => { atContact = en.isIntersecting; updateSticky(); }).observe(document.getElementById('contact')!);
+</script>

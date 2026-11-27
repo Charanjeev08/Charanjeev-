@@ -8,9 +8,11 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  /** false hides the default header and footer, for pages that draw their own. */
+  chrome?: boolean;
 }
 
-const { title, description = SITE.defaultDescription, noindex = false } = Astro.props;
+const { title, description = SITE.defaultDescription, noindex = false, chrome = true } = Astro.props;
 // Canonical uses the path only, so query parameters never create duplicates.
 const canonical = new URL(Astro.url.pathname, SITE.url).href.replace(/\/$/, '') || SITE.url;
 const jsonLd = graph(webPageSchema({ url: canonical, title, description }));
@@ -36,15 +38,21 @@ const jsonLd = graph(webPageSchema({ url: canonical, title, description }));
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="site-header">
-      <a href="/" class="logo">{SITE.name}</a>
-    </header>
+    {chrome && (
+      <header class="site-header">
+        <a href="/" class="logo">{SITE.name}</a>
+      </header>
+    )}
+    <slot name="header" />
     <main id="main">
       <slot />
     </main>
-    <footer class="site-footer">
-      <p>&copy; {new Date().getFullYear()} {SITE.personName}</p>
-    </footer>
+    {chrome && (
+      <footer class="site-footer">
+        <p>&copy; {new Date().getFullYear()} {SITE.personName}</p>
+      </footer>
+    )}
+    <slot name="footer" />
   </body>
 </html>
 

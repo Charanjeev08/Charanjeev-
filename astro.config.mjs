@@ -8,6 +8,9 @@ import sitemap from '@astrojs/sitemap';
 
 // Pages that are not ready yet. They redirect to homepage sections
 // and are kept out of the sitemap.
+// Draft pages: built and viewable, but noindex and kept out of the sitemap.
+const draftPages = ['/homepage'];
+
 const placeholderRedirects = {
   // '/services': '/#services',
 };
@@ -26,6 +29,7 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/keystatic') &&
+        !draftPages.some((p) => page.replace(/\/$/, '').endsWith(p)) &&
         !Object.keys(placeholderRedirects).some((p) => page.endsWith(p)),
     }),
   ],
